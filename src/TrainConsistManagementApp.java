@@ -1,5 +1,18 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
+// Bogie class (custom object)
+class Bogie {
+    String name;
+    int capacity;
+
+    // Constructor
+    Bogie(String name, int capacity) {
+        this.name = name;
+        this.capacity = capacity;
+    }
+}
 
 public class TrainConsistManagementApp {
 
@@ -7,16 +20,22 @@ public class TrainConsistManagementApp {
 
         System.out.println("=== Train Consist Management App ===");
 
-        Map<String, Integer> bogieCapacity = new HashMap<>();
 
-        bogieCapacity.put("Sleeper", 72);
-        bogieCapacity.put("AC Chair", 60);
-        bogieCapacity.put("First Class", 40);
+        List<Bogie> bogies = new ArrayList<>();
 
-        System.out.println("\nBogie Capacity:");
 
-        for (Map.Entry<String, Integer> entry : bogieCapacity.entrySet()) {
-            System.out.println(entry.getKey() + " -> " + entry.getValue());
+        bogies.add(new Bogie("Sleeper", 72));
+        bogies.add(new Bogie("AC Chair", 60));
+        bogies.add(new Bogie("First Class", 40));
+
+
+        bogies.sort(Comparator.comparingInt(b -> b.capacity));
+
+
+        System.out.println("\nBogies sorted by capacity:");
+
+        for (Bogie b : bogies) {
+            System.out.println(b.name + " -> " + b.capacity);
         }
     }
 }
