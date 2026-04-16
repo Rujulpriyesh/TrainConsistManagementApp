@@ -1,43 +1,53 @@
 import java.util.*;
 
+public class import java.util.*;
+
 public class TrainConsistManagementApp {
 
-    public static boolean binarySearch(String[] arr, String key) {
+    public static boolean searchBogie(String[] arr, String key) {
 
-        Arrays.sort(arr); // ensure sorted
-
-        int low = 0;
-        int high = arr.length - 1;
-
-        while (low <= high) {
-
-            int mid = (low + high) / 2;
-
-            int cmp = key.compareTo(arr[mid]);
-
-            if (cmp == 0) {
-                return true; // found
-            } else if (cmp < 0) {
-                high = mid - 1;
-            } else {
-                low = mid + 1;
-            }
+        if (arr.length == 0) {
+            throw new IllegalStateException("No bogies available for search");
         }
 
-        return false; // not found
+        for (String id : arr) {
+            if (id.equals(key)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static void main(String[] args) {
 
-        String[] bogieIds = {"BG101","BG205","BG309","BG412","BG550"};
-        String key = "BG309";
+        String[] bogies = {"BG101","BG205","BG309"};
+        String key = "BG205";
 
-        boolean result = binarySearch(bogieIds, key);
+        boolean result = searchBogie(bogies, key);
+        System.out.println(result ? "Found" : "Not Found");
+    }
+} {
 
-        if (result) {
-            System.out.println("Bogie Found");
-        } else {
-            System.out.println("Bogie Not Found");
+    public static boolean searchBogie(String[] arr, String key) {
+
+        if (arr.length == 0) {
+            throw new IllegalStateException("No bogies available for search");
         }
+
+        for (String id : arr) {
+            if (id.equals(key)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+
+        String[] bogies = {"BG101","BG205","BG309"};
+        String key = "BG205";
+
+        boolean result = searchBogie(bogies, key);
+        System.out.println(result ? "Found" : "Not Found");
     }
 }
